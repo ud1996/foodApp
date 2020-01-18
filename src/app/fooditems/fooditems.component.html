@@ -1,0 +1,31 @@
+
+
+
+<div>
+    <!-- <form [formGroup]="searchNutrient" (submit)="searchNutrients()">
+        <label for="FoodItem"></label>
+        <input type="text" name="searchNutrient" id="searchNutrient" formControlName="nutrient">
+        <input type="submit" name="submit" value="submit">
+    </form> -->
+    <p>fgdfggg</p>
+    {{foodList}}
+      {{foodList.item}} 
+  
+    <table>
+        <p>dfsaa</p>
+        <tbody *ngFor="let item of foodList.item">
+            <tr>
+                <th>Group</th>
+                <th>Name</th> 
+                <th>Ds</th>
+                <th>Manu</th>
+              </tr>
+              <tr>
+                <!-- <th>{{item.group}}</th>
+                <th>{{item.name}}</th> 
+                <th>{{item.ds}}</th>
+                <th>{{item.manu}}</th> -->
+              </tr>
+        </tbody>
+    </table>
+</div>
