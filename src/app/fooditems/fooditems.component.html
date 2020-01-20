@@ -7,24 +7,26 @@
         <input type="text" name="searchNutrient" id="searchNutrient" formControlName="nutrient">
         <input type="submit" name="submit" value="submit">
     </form> -->
-    <p>fgdfggg</p>
-    {{foodList}}
-      {{foodList.item}} 
+ 
+
   
     <table>
-        <p>dfsaa</p>
-        <tbody *ngFor="let item of foodList.item">
-            <tr>
                 <th>Group</th>
                 <th>Name</th> 
                 <th>Ds</th>
+                <th>NBDNo</th>
                 <th>Manu</th>
+        <tbody *ngFor="let item of items">
+            <tr>
+                
               </tr>
               <tr>
-                <!-- <th>{{item.group}}</th>
+                <th>{{item.group}}</th>
                 <th>{{item.name}}</th> 
                 <th>{{item.ds}}</th>
-                <th>{{item.manu}}</th> -->
+                <th>{{item.ndbno}}</th>
+                <th>{{item.manu}}</th> 
+                <th><button (click)="execute(item.ndbno)">view</button></th>
               </tr>
         </tbody>
     </table>

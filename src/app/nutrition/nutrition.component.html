@@ -1,0 +1,45 @@
+<label>Filter By:</label>
+  <select name="filterBy" id="filterBy" class="form-control" (change)="onChange($event)">
+                     
+           <option *ngFor="let n of filtrerValue" value={{n}}  >{{n}}</option>
+          
+</select>
+
+<table *ngIf="!showFilter">
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Unit</th>
+    <th>Value</th>
+    <th>derivation</th>
+<tbody *ngFor="let item of nutrient">
+<tr>
+    
+  </tr>
+  <tr>
+  <th>{{item.nutrient_id}}</th>
+  <th>{{item.name}}</th>
+  <th>{{item.unit}}</th>
+  <th>{{item.value}}</th>
+  <th>{{item.derivation}}</th>
+</tbody>
+</table>
+
+
+<table *ngIf="showFilter">
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Unit</th>
+    <th>Value</th>
+    <th>derivation</th>
+<tbody>
+<tr>
+    
+  </tr>
+  <tr>
+  <th>{{nutrientObject.nutrient_id}}</th>
+  <th>{{nutrientObject.name}}</th>
+  <th>{{nutrientObject.unit}}</th>
+  <th>{{nutrientObject.value}}</th>
+  <th>{{nutrientObject.derivation}}</th>
+</tbody>
+</table>

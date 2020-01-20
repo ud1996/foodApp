@@ -1,4 +1,6 @@
 import { Item } from './Item.model';
+import { Nutrient } from './nutrients.model';
+import { Measures } from './measures.model';
 
 export class Lists{
     q ?: string;
@@ -9,5 +11,7 @@ export class Lists{
     total ?: number;
     group ?: string;
     sort ?: string;
-    item ?:Item[]
+    item ?:Item[];
+    nutrients ?: Nutrient[];
+    measures:Measures[];
 }

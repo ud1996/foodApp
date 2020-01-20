@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { foodItemService } from '../services/foodItemServices.service';
 import { Food } from '../Model/Food.model';
 import { Router } from '@angular/router';
+import { Item } from '../Model/Item.model';
+import { Lists } from '../Model/lists.model';
 
 
 @Component({
@@ -15,6 +17,7 @@ export class SearchComponent implements OnInit {
   searchForm:FormGroup;
   searchNutrient:FormGroup
   food:Food;
+  items:Item[];
   showNutrient: boolean = false;
   nutrientName:string;
   @Output() foodOutput = new EventEmitter<Food>();
@@ -35,10 +38,14 @@ export class SearchComponent implements OnInit {
      console.log("incsave");
      this.foodItem = this.searchForm.get('item').value;
      console.log(this.foodItem);
-     this.foodItemService.getFoodItem(this.foodItem).subscribe((f:Food)=>{
-          this.food = f;
-          console.log(this.food);
+     this.foodItemService.getFoodItem(this.foodItem).subscribe((data:Food)=>{
+          this.food = data;
+          console.log("dfdfdqwwq");
+          
+          console.log(this.food.lists);
           this.showNutrient = true;
+          this.items = data['list']['item'];
+          console.log(this.items);
           this.emitFood();
           this.router.navigate(['/food']);
      })
