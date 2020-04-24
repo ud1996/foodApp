@@ -1,0 +1,113 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		int t,n,k;
+		Scanner scan = new Scanner(System.in);
+		t = scan.nextInt();
+		while(t>0){
+		    
+		}
+		n = scan.nextInt();
+		k = scan.nextInt();
+		
+		int[] arr = new int[n+3];
+		for(int i =0;i<n;i++)
+		    arr[i] = scan.nextInt();
+		
+		for(int i=(n/2)-1;i>=0;i--)  
+		    buildMinHeap(arr,i,n);
+		    
+		for(int i=0 ; i<n ; i++)
+		    System.out.print(arr[i]+" ");
+		    
+	   	/*for(int i=(n/2)-1;i>=0;i--) 
+		     buildMaxHeap(arr,i,n);
+		  System.out.println(" ");    
+		for(int i=0 ; i<n ; i++)
+		    System.out.print(arr[i]+" ");*/
+		    
+		
+		arr[n] = 0; 
+		minHeapify(arr,(n/2)-1,n+1);
+		
+		System.out.println(" heapify element ");    
+		for(int i=0 ; i<n+1 ; i++)
+		    System.out.print(arr[i]+" ");
+		int swap = arr[n];
+		arr[n] = arr[0];
+		arr[0] = swap;
+		buildMinHeap(arr,0,n);
+		System.out.println(" ");    
+		for(int i=0 ; i<n ; i++)
+		    System.out.print(arr[i]+" ");
+	}
+	
+   public static void buildMinHeap(int[] a , int num ,int n){
+       
+       int parent = a[num];
+       int l = (2*num)+1;
+       int r = (2*num)+2;
+       int smallest = num;
+       
+       if(l<n && r<n && (parent > a[l] || parent > a[r])) smallest = a[l] > a[r] ? r : l;
+       else if(l < n && parent > a[l])smallest = l;
+       else if(r < n && parent > a[l])smallest = r;
+       
+       
+       if(smallest != num){
+         
+           int swap = a[smallest];
+           a[smallest] = a[num];
+           a[num] = swap;
+           buildMinHeap(a,smallest,n);
+       }
+       
+   }
+   
+   public static void buildMaxHeap(int[] a , int num , int n){
+       
+       int parent = num;
+       int l = (2*num)+1;
+       int r = (2*num)+2;
+       
+       int largest = num;
+       
+       if(l<n && r<n &&(a[num] < a[l] || a[num] < a[r])) 
+            largest = a[l] > a[r] ? l : r;
+       else if(l < n && a[l] > a[num]) largest = l;
+       else if(r < n && a[r] > a[num]) largest = r;
+       
+       if(num != largest){
+           int swap = a[largest];
+           a[largest] = a[num];
+           a[num] = swap ;
+           buildMaxHeap(a,largest,n);
+       }
+   }
+   
+   public static void minHeapify(int[] a, int num , int n){
+       int l = (2*num)+1;
+       int r = (2*num)+2;
+       int p = (num/2)-1;
+       int smallest = num;
+       
+       if(l<n && r<n &&(a[num] > a[l] || a[num] > a[r]))
+            smallest = a[l] > a[r] ? r : l;
+       else if(l<n && a[num] > a[l]) smallest = l;
+       else if(r<n && a[num] > a[r]) smallest = r;
+       
+       if(num != smallest){
+           int swap = a[smallest];
+           a[smallest] = a[num];
+           a[num] = swap;
+           if(p >= 0)
+            minHeapify(a,p,n);
+       }
+   }
+}
